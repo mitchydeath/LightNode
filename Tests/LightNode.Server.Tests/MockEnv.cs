@@ -1,7 +1,7 @@
 ﻿using LightNode.Formatter;
 using Microsoft.Owin.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Owin;
+using LightNode;
 using System.Collections.Generic;
 using System.Net.Http;
 

@@ -1,0 +1,117 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Swagger\SwaggerUI\css\print.css" />
+    <None Remove="Swagger\SwaggerUI\css\reset.css" />
+    <None Remove="Swagger\SwaggerUI\css\screen.css" />
+    <None Remove="Swagger\SwaggerUI\css\style.css" />
+    <None Remove="Swagger\SwaggerUI\css\typography.css" />
+    <None Remove="Swagger\SwaggerUI\fonts\DroidSans-Bold.ttf" />
+    <None Remove="Swagger\SwaggerUI\fonts\DroidSans.ttf" />
+    <None Remove="Swagger\SwaggerUI\images\collapse.gif" />
+    <None Remove="Swagger\SwaggerUI\images\expand.gif" />
+    <None Remove="Swagger\SwaggerUI\images\explorer_icons.png" />
+    <None Remove="Swagger\SwaggerUI\images\favicon-16x16.png" />
+    <None Remove="Swagger\SwaggerUI\images\favicon-32x32.png" />
+    <None Remove="Swagger\SwaggerUI\images\favicon.ico" />
+    <None Remove="Swagger\SwaggerUI\images\logo_small.png" />
+    <None Remove="Swagger\SwaggerUI\images\pet_store_api.png" />
+    <None Remove="Swagger\SwaggerUI\images\throbber.gif" />
+    <None Remove="Swagger\SwaggerUI\images\wordnik_api.png" />
+    <None Remove="Swagger\SwaggerUI\index.html" />
+    <None Remove="Swagger\SwaggerUI\lang\en.js" />
+    <None Remove="Swagger\SwaggerUI\lang\es.js" />
+    <None Remove="Swagger\SwaggerUI\lang\fr.js" />
+    <None Remove="Swagger\SwaggerUI\lang\geo.js" />
+    <None Remove="Swagger\SwaggerUI\lang\it.js" />
+    <None Remove="Swagger\SwaggerUI\lang\ja.js" />
+    <None Remove="Swagger\SwaggerUI\lang\ko-kr.js" />
+    <None Remove="Swagger\SwaggerUI\lang\pl.js" />
+    <None Remove="Swagger\SwaggerUI\lang\pt.js" />
+    <None Remove="Swagger\SwaggerUI\lang\ru.js" />
+    <None Remove="Swagger\SwaggerUI\lang\tr.js" />
+    <None Remove="Swagger\SwaggerUI\lang\translator.js" />
+    <None Remove="Swagger\SwaggerUI\lang\zh-cn.js" />
+    <None Remove="Swagger\SwaggerUI\lib\backbone-min.js" />
+    <None Remove="Swagger\SwaggerUI\lib\es5-shim.js" />
+    <None Remove="Swagger\SwaggerUI\lib\handlebars-2.0.0.js" />
+    <None Remove="Swagger\SwaggerUI\lib\highlight.9.1.0.pack.js" />
+    <None Remove="Swagger\SwaggerUI\lib\highlight.9.1.0.pack_extended.js" />
+    <None Remove="Swagger\SwaggerUI\lib\jquery-1.8.0.min.js" />
+    <None Remove="Swagger\SwaggerUI\lib\jquery.ba-bbq.min.js" />
+    <None Remove="Swagger\SwaggerUI\lib\jquery.slideto.min.js" />
+    <None Remove="Swagger\SwaggerUI\lib\jquery.wiggle.min.js" />
+    <None Remove="Swagger\SwaggerUI\lib\js-yaml.min.js" />
+    <None Remove="Swagger\SwaggerUI\lib\jsoneditor.min.js" />
+    <None Remove="Swagger\SwaggerUI\lib\lodash.min.js" />
+    <None Remove="Swagger\SwaggerUI\lib\marked.js" />
+    <None Remove="Swagger\SwaggerUI\lib\object-assign-pollyfill.js" />
+    <None Remove="Swagger\SwaggerUI\lib\swagger-oauth.js" />
+    <None Remove="Swagger\SwaggerUI\o2c.html" />
+    <None Remove="Swagger\SwaggerUI\swagger-ui.js" />
+    <None Remove="Swagger\SwaggerUI\swagger-ui.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Swagger\SwaggerUI\css\print.css" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\css\reset.css" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\css\screen.css" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\css\style.css" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\css\typography.css" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\fonts\DroidSans-Bold.ttf" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\fonts\DroidSans.ttf" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\images\collapse.gif" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\images\expand.gif" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\images\explorer_icons.png" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\images\favicon-16x16.png" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\images\favicon-32x32.png" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\images\favicon.ico" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\images\logo_small.png" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\images\pet_store_api.png" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\images\throbber.gif" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\images\wordnik_api.png" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\index.html" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\en.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\es.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\fr.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\geo.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\it.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\ja.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\ko-kr.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\pl.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\pt.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\ru.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\tr.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\translator.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lang\zh-cn.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\backbone-min.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\es5-shim.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\handlebars-2.0.0.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\highlight.9.1.0.pack.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\highlight.9.1.0.pack_extended.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\jquery-1.8.0.min.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\jquery.ba-bbq.min.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\jquery.slideto.min.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\jquery.wiggle.min.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\js-yaml.min.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\jsoneditor.min.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\lodash.min.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\marked.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\object-assign-pollyfill.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\lib\swagger-oauth.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\o2c.html" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\swagger-ui.js" />
+    <EmbeddedResource Include="Swagger\SwaggerUI\swagger-ui.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

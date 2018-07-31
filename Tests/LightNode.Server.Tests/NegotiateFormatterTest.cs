@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net.Http;
 using System.Collections.Generic;
 using Microsoft.Owin.Testing;
-using Owin;
+using LightNode;
 using LightNode.Formatter;
 using System.IO;
 using LightNode.Server;

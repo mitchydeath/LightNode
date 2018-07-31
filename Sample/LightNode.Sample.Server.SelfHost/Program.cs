@@ -1,7 +1,7 @@
 ﻿using LightNode.Server;
 using System.Linq;
 using Microsoft.Owin.Hosting;
-using Owin;
+using LightNode;
 using System;
 using System.Threading.Tasks;
 using LightNode.Formatter;
@@ -23,7 +23,7 @@ namespace LightNode.Sample.Server.SelfHost
 
     public class Startup
     {
-        public void Configuration(Owin.IAppBuilder app)
+        public void Configuration(LightNode.IAppBuilder app)
         {
             app.Map("/api", builder =>
             {

@@ -1,5 +1,5 @@
 ﻿using Nancy;
-using Owin;
+using LightNode;
 
 namespace Nancyfx
 {

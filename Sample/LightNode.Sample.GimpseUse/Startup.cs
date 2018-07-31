@@ -4,7 +4,7 @@ using Glimpse.LightNode;
 using LightNode.Formatter;
 using LightNode.Server;
 using Microsoft.Owin;
-using Owin;
+using LightNode;
 using System;
 using System.Reflection;
 using System.Text;
@@ -32,7 +32,7 @@ namespace LightNode.Sample.GlimpseUse
 
     public class Startup
     {
-        public void Configuration(Owin.IAppBuilder app)
+        public void Configuration(LightNode.IAppBuilder app)
         {
             app.EnableGlimpse();
             app.Map("/api", builder =>

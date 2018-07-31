@@ -1,5 +1,5 @@
 ﻿using System;
-using Owin;
+using LightNode;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net.Http;
 using System.Collections.Generic;
@@ -17,15 +17,15 @@ namespace LightNode.Server.Tests
             var listener = new MockEventListener();
             listener.EnableEvents(LightNode.Diagnostics.LightNodeEventSource.Log, EventLevel.LogAlways);
 
-            var testServer = TestServer.Create(app =>
+            var testServer = TestServer.Create((Action<Owin.IAppBuilder>)(app =>
             {
                 var option = new LightNodeOptions
                 {
                     Logger = LightNode.Diagnostics.LightNodeEventSource.Log
                 };
 
-                app.UseLightNode(option, typeof(MockEnv).Assembly);
-            });
+                Owin.AppBuilderLightNodeMiddlewareExtensions.UseLightNode(app, option, typeof(MockEnv).Assembly);
+            }));
 
             (listener.EventList.Count > 0).IsTrue();
         }

@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Owin.Testing;
-using Owin;
+using LightNode;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Specialized;

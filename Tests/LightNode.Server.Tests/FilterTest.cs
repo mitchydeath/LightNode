@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Owin;
+using LightNode;
 using LightNode.Formatter;
 
 namespace LightNode.Server.Tests
@@ -15,7 +15,7 @@ namespace LightNode.Server.Tests
         [TestMethod]
         public void FilterBasic()
         {
-            using (var server = Microsoft.Owin.Testing.TestServer.Create(app =>
+            using (var server = Microsoft.Owin.Testing.TestServer.Create((Action<Owin.IAppBuilder>)(app =>
             {
                 var option = new LightNodeOptions(AcceptVerbs.Get | AcceptVerbs.Post, new JavaScriptContentFormatter());
                 option.Filters.Add(async (context, next) =>
@@ -44,20 +44,20 @@ namespace LightNode.Server.Tests
                 }, order: -1000);
 
 
-                app.Use(async (context, next) =>
-                {
-                    try
-                    {
-                        await next();
-                    }
-                    finally
-                    {
-                        var filterList = context.Environment["filter"] as List<string>;
-                        filterList.Is("Contract1", "Global1", "Method1", "Global2");
-                    }
-                });
-                app.UseLightNode(option, typeof(MockEnv).Assembly);
-            }))
+                Owin.AppBuilderUseExtensions.Use(app, async (context, next) =>
+                 {
+                     try
+                     {
+                         await next();
+                     }
+                     finally
+                     {
+                         var filterList = context.Environment["filter"] as List<string>;
+                         filterList.Is("Contract1", "Global1", "Method1", "Global2");
+                     }
+                 });
+                Owin.AppBuilderLightNodeMiddlewareExtensions.UseLightNode(app, option, typeof(MockEnv).Assembly);
+            })))
             {
 
                 server.CreateRequest("/FilterTestContract/Hoge").GetAsync().Wait();
@@ -68,7 +68,7 @@ namespace LightNode.Server.Tests
         [TestMethod]
         public void FilterBasic2()
         {
-            using (var server = Microsoft.Owin.Testing.TestServer.Create(app =>
+            using (var server = Microsoft.Owin.Testing.TestServer.Create((Action<Owin.IAppBuilder>)(app =>
             {
                 var option = new LightNodeOptions(AcceptVerbs.Get | AcceptVerbs.Post, new JavaScriptContentFormatter());
                 option.Filters.Add(async (context, next) =>
@@ -90,20 +90,20 @@ namespace LightNode.Server.Tests
                 }, order: 1000);
 
 
-                app.Use(async (context, next) =>
-                {
-                    try
-                    {
-                        await next();
-                    }
-                    finally
-                    {
-                        var filterList = context.Environment["filter"] as List<string>;
-                        filterList.Is("Contract1", "Global1");
-                    }
-                });
-                app.UseLightNode(option, typeof(MockEnv).Assembly);
-            }))
+                Owin.AppBuilderUseExtensions.Use(app, async (context, next) =>
+                 {
+                     try
+                     {
+                         await next();
+                     }
+                     finally
+                     {
+                         var filterList = context.Environment["filter"] as List<string>;
+                         filterList.Is("Contract1", "Global1");
+                     }
+                 });
+                Owin.AppBuilderLightNodeMiddlewareExtensions.UseLightNode(app, option, typeof(MockEnv).Assembly);
+            })))
             {
 
                 server.CreateRequest("/FilterTestContract/Huga").GetAsync().Result.StatusCode.Is(System.Net.HttpStatusCode.NotFound);

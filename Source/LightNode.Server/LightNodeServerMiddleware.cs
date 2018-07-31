@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LightNode.Diagnostics;
 using System.Diagnostics;
 using System.Linq;
+using Owin;
 
 namespace LightNode.Server
 {
@@ -75,7 +76,7 @@ namespace LightNode.Server
     }
 }
 
-namespace Owin
+namespace LightNode
 {
     public static class AppBuilderLightNodeMiddlewareExtensions
     {

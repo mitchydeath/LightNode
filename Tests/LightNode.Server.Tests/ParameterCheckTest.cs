@@ -1,5 +1,5 @@
 ﻿using System;
-using Owin;
+using LightNode;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net;
@@ -42,14 +42,15 @@ namespace LightNode.Server.Tests
             MockEnv.CreateRequest("/ParameterContract/String").GetAsync().Result.StatusCode.Is(HttpStatusCode.BadRequest);
             MockEnv.CreateRequest("/ParameterContract/String?x=hoge").GetString().Trim('\"').Is("hoge");
 
-            using(var server = Microsoft.Owin.Testing.TestServer.Create(app =>
+            using(var server = Microsoft.Owin.Testing.TestServer.Create((Action<Owin.IAppBuilder>)(app =>
             {
-                app.UseLightNode(
-                    new LightNodeOptions(AcceptVerbs.Get | AcceptVerbs.Post,
+                Owin.AppBuilderLightNodeMiddlewareExtensions.UseLightNode(
+app, new LightNodeOptions(AcceptVerbs.Get | AcceptVerbs.Post,
                         new JavaScriptContentFormatter(),
-                        new TextContentFormatter()){ ParameterStringImplicitNullAsDefault = true}
+                        new TextContentFormatter())
+{ ParameterStringImplicitNullAsDefault = true }
                     , typeof(MockEnv).Assembly);
-            }))
+            })))
             {
                 server.CreateRequest("/ParameterContract/String").GetString().Trim('\"').Is("null");
             }
@@ -124,14 +125,15 @@ namespace LightNode.Server.Tests
         [TestMethod]
         public void EnumStrict()
         {
-            using (var server = Microsoft.Owin.Testing.TestServer.Create(app =>
+            using (var server = Microsoft.Owin.Testing.TestServer.Create((Action<Owin.IAppBuilder>)(app =>
             {
-                app.UseLightNode(
-                    new LightNodeOptions(AcceptVerbs.Get | AcceptVerbs.Post,
+                Owin.AppBuilderLightNodeMiddlewareExtensions.UseLightNode(
+app, new LightNodeOptions(AcceptVerbs.Get | AcceptVerbs.Post,
                         new JavaScriptContentFormatter(),
-                        new TextContentFormatter()) { ParameterEnumAllowsFieldNameParse = true }
+                        new TextContentFormatter())
+{ ParameterEnumAllowsFieldNameParse = true }
                     , typeof(MockEnv).Assembly);
-            }))
+            })))
             {
                 server.CreateRequest("/ParameterContract/Enum?fruit=orange").GetString().Trim('\"').Is("Orange");
                 server.CreateRequest("/ParameterContract/Enum?fruit=oRange").GetString().Trim('\"').Is("Orange");

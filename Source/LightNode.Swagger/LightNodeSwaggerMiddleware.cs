@@ -362,7 +362,7 @@ namespace LightNode.Swagger
     }
 }
 
-namespace Owin
+namespace LightNode
 {
     public static class AppBuilderLightNodeSwaggerMiddlewareExtensions
     {

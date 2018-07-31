@@ -38,7 +38,7 @@ namespace Glimpse.LightNode
     }
 }
 
-namespace Owin
+namespace LightNode
 {
     public static class GlimpseLightNodeMiddlewareExtensions
     {

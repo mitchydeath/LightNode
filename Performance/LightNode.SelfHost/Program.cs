@@ -1,6 +1,6 @@
 ﻿using LightNode.Server;
 using Microsoft.Owin.Hosting;
-using Owin;
+using LightNode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
