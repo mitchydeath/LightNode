@@ -1,6 +1,7 @@
 ﻿using LightNode.Server;
 using LightNode.Swagger;
 using LightNode.Swagger.Schema;
+using Owin;
 using System;
 using System.Collections.Generic;
 using System.IO;

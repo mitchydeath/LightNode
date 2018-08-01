@@ -359,7 +359,7 @@ namespace <#= namespaceName #>
                 }
                 list.Add(new KeyValuePair<string, string[]>("<#= parameter.Name #>", l2.ToArray()));
             }
-<# } else if(parameter.ParameterType.IsClass || (parameter.ParameterType.IsGenericType && parameter.ParameterType.GetGenericTypeDefinition() == typeof(Nullable<>))) { #>
+<# } else if(parameter.ParameterType.IsClass || (parameter.ParameterType.IsGenericType && parameter.ParameterType.GetGenericTypeDefinition() == typeof(Nullable))) { #>
             if (<#= parameter.Name #> != null)
             {
                 form.AddField("<#= parameter.Name #>", <# WriteParameter(parameter.ParameterType, parameter.Name); #>);
@@ -411,7 +411,7 @@ namespace <#= namespaceName #>
             var underlyingType = Enum.GetUnderlyingType(parameterType);
             Write(string.Format("(({0}){1}).ToString()", underlyingType, parameterName));
         }
-        else if(parameterType.IsGenericType && parameterType.GetGenericTypeDefinition() == typeof(Nullable<>))
+        else if(parameterType.IsGenericType && parameterType.GetGenericTypeDefinition() == typeof(Nullable))
         {
             WriteParameter(parameterType.GetGenericArguments()[0], parameterName);
         }

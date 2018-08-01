@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using LightNode;
+﻿using LightNode;
+using LightNode.Formatter;
 using LightNode.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using LightNode;
+using System.IO;
+using System.Reflection;
 
 namespace LightNodeForDotNetCoreSample
 {
@@ -34,59 +28,64 @@ namespace LightNodeForDotNetCoreSample
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseLightNode(typeof(Startup));
-            //app.Map("/api", builder =>
-            //{
+            app.Map("/api", builder =>
+            {
+                builder.UseLightNode(typeof(Startup));
 
-            //    builder.UseLightNode(typeof(Startup));
-            //});
+                builder.UseLightNode(new LightNodeOptions(AcceptVerbs.Get | AcceptVerbs.Post, new JsonContentFormatter())
+                {
+                    ParameterEnumAllowsFieldNameParse = true, // If you want to use enums human readable display on Swagger, set to true
+                    ErrorHandlingPolicy = ErrorHandlingPolicy.ReturnInternalServerErrorIncludeErrorDetails,
+                    OperationMissingHandlingPolicy = OperationMissingHandlingPolicy.ReturnErrorStatusCodeIncludeErrorDetails
+                });
+            });
 
-            //app.Map("/swagger", builder =>
-            //{
-            //    var xmlName = "AspNetCoreSample.xml";
-            //    var xmlPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), xmlName);
+            app.Map("/swagger", builder =>
+            {
+                var xmlName = "LightNode.Sample.GlimpseUse.xml";
+                var xmlPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), xmlName);
 
-            //    builder.UseLightNodeSwagger(new LightNode.Swagger.SwaggerOptions("AspNetCoreSample", "/api")
-            //    {
-            //        XmlDocumentPath = xmlPath,
-            //        IsEmitEnumAsString = true
-            //    });
-            //});
+                builder.UseLightNodeSwagger(new LightNode.Swagger.SwaggerOptions("AspNetCoreSample", "/api")
+                {
+                    XmlDocumentPath = xmlPath,
+                    IsEmitEnumAsString = true
+                });
+            });
         }
-    }
 
-    public class Toriaezu : LightNodeContract
-    {
-        public string Echo(string x)
+        public class Toriaezu : LightNodeContract
         {
-            return x;
+            public string Echo(string x)
+            {
+                return x;
+            }
         }
-    }
 
 
-    /// <summary>
-    /// aaa
-    /// </summary>
-    public class MyClass : LightNodeContract
-    {
         /// <summary>
-        /// HogeHoge
+        /// aaa
         /// </summary>
-        public string Hoge(string i)
+        public class MyClass : LightNodeContract
         {
-            return "hogehogehoge!!!";
-        }
+            /// <summary>
+            /// HogeHoge
+            /// </summary>
+            public string Hoge(string i)
+            {
+                return "hogehogehoge!!!";
+            }
 
-        [Get]
-        public int[] ArraySendTestGet(int[] xs)
-        {
-            return xs;
-        }
+            [Get]
+            public int[] ArraySendTestGet(int[] xs)
+            {
+                return xs;
+            }
 
-        [Post]
-        public int[] ArraySendTestPost(int[] xs)
-        {
-            return xs;
+            [Post]
+            public int[] ArraySendTestPost(int[] xs)
+            {
+                return xs;
+            }
         }
     }
 }
